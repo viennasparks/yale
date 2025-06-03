@@ -1,0 +1,91 @@
+# Configuration parameters for the Aptamer Discovery Platform
+
+# Data processing parameters
+data_processing:
+  test_size: 0.2
+  random_state: 42
+  validation_split: 0.1
+  min_sequence_length: 10
+  max_sequence_length: 100
+
+# Feature extraction parameters
+feature_extraction:
+  k_mer_sizes: [1, 2, 3, 4]
+  include_structural_features: true
+  include_thermodynamic_features: true
+  include_composition_features: true
+  energy_model: "turner2004"
+  temperature: 37.0  # in Celsius
+  na_concentration: 1.0  # in M
+  mg_concentration: 0.0  # in M
+  
+# Structure prediction parameters
+structure_prediction:
+  algorithm: "mfe"  # Options: mfe, centroid, suboptimal
+  max_suboptimal_structures: 10
+  energy_range: 5.0  # in kcal/mol
+  dangling_ends: 2   # Options: 0, 1, 2, 3
+  parameter_set: "rna_turner2004"
+  
+# Machine learning parameters
+modeling:
+  binding_affinity:
+    model_type: "xgboost"  # Options: xgboost, random_forest, neural_network
+    n_estimators: 500
+    max_depth: 8
+    learning_rate: 0.01
+    early_stopping_rounds: 30
+    neural_network:
+      hidden_layers: [128, 64, 32]
+      dropout_rate: 0.3
+      batch_size: 32
+      epochs: 200
+      
+  cross_reactivity:
+    model_type: "xgboost"  # Options: xgboost, random_forest, neural_network
+    n_estimators: 300
+    max_depth: 6
+    learning_rate: 0.05
+    
+# Aptamer selection parameters
+aptamer_selection:
+  min_binding_score: 0.8
+  max_cross_reactivity: 0.2
+  specificity_weight: 0.6
+  binding_affinity_weight: 0.4
+  structural_stability_weight: 0.3
+  optimization_iterations: 1000
+  population_size: 200
+  mutation_rate: 0.05
+  crossover_rate: 0.8
+  
+# Target molecules
+targets:
+  - name: "fentanyl"
+    smiles: "CCC(=O)N(C1CCN(CC1)CCC2=CC=CC=C2)C3=CC=CC=C3"
+    molecular_weight: 336.5
+    
+  - name: "methamphetamine"
+    smiles: "CC(NC)CC1=CC=CC=C1"
+    molecular_weight: 149.2
+    
+  - name: "benzodiazepine"
+    # Using diazepam as a representative benzodiazepine
+    smiles: "CN1C(=O)CN=C(C2=C1C=CC(=C2)Cl)C3=CC=CC=C3"
+    molecular_weight: 284.7
+    
+  - name: "xylazine"
+    smiles: "CN(C)C(=NC1=CC=C(C=C1)C)NC2=CC=CC=C2"
+    molecular_weight: 220.3
+    
+  - name: "nitazene"
+    # Using isotonitazene as a representative nitazene
+    smiles: "CCC(=NCCC)N1CCN(CC1)C2=C3C=C(C=CC3=NC=C2)C(=O)OC"
+    molecular_weight: 411.5
+
+# Output parameters
+output:
+  save_intermediate_results: true
+  output_directory: "results"
+  plot_format: "png"  # Options: png, pdf, svg
+  dpi: 300
