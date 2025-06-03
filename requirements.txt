@@ -1,0 +1,57 @@
+# Core data manipulation and analysis
+numpy==1.24.3
+pandas==2.0.3
+scipy==1.10.1
+
+# Machine Learning
+scikit-learn==1.3.0
+torch==2.0.1
+xgboost==1.7.5
+lightgbm==3.3.5
+catboost==1.2.1
+tensorboard==2.13.0
+
+# Bioinformatics tools
+biopython==1.81
+ViennaRNA==2.5.1
+forgi==2.0.2
+nupack==4.0.1
+
+# Structure prediction and modeling
+rdkit==2023.3.2
+moleculekit==0.7.0
+pybel==0.15.4
+pymol-open-source==2.5.0
+openbabel==3.1.1
+
+# Data visualization
+matplotlib==3.7.2
+seaborn==0.12.2
+plotly==5.15.0
+dash==2.11.1
+
+# Jupyter notebooks
+jupyter==1.0.0
+ipywidgets==8.0.6
+ipython==8.14.0
+nbformat==5.9.0
+
+# Testing and validation
+pytest==7.3.1
+pytest-cov==4.1.0
+hypothesis==6.77.0
+
+# Utilities
+tqdm==4.65.0
+joblib==1.3.1
+dill==0.3.6
+click==8.1.3
+loguru==0.7.0
+pyyaml==6.0.1
+more-itertools==9.1.0
+
+# Development and documentation
+sphinx==7.0.1
+black==23.3.0
+isort==5.12.0
+mypy==1.3.0
